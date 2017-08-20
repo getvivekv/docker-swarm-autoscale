@@ -1,6 +1,8 @@
 #!/bin/sh
 
-curl -XPOST http://influxdb:8086/query --data-urlencode "q=CREATE DATABASE swarm"
+# Docker Container Stats Collector
+# Author Vivek Vasukuttan <vivekv@vivekv.com>
+
 docker stats --no-stream --format "{{.ID}} {{.CPUPerc}}" | while read -r line ; do
     CONTAINER_ID=`echo ${line} | cut -d " " -f1`
     CPU=`echo ${line} | cut -d " " -f2 | sed 's/%//'`
