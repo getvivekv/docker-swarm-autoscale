@@ -5,4 +5,4 @@ RUN apk --update add docker php-apache2 curl php-cli php-json php-phar php-opens
     sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf
 EXPOSE 80
 COPY scripts/  /
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/bootstrap.sh"]
