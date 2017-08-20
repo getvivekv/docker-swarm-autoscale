@@ -9,5 +9,6 @@ docker service create \
     --mount type=bind,source=${VOLUME},target=/var/lib/influxdb,readonly=false \
     --name influxdb \
     --network swarm-scale \
+    --constraint "node.hostname == us-n-m-1.streamone.cloud" \
     --detach=true \
     influxdb:alpine
