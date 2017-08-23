@@ -25,6 +25,7 @@ docker service create \
     --network swarm-scale \
     --constraint "node.role != manager" \
     --detach=true \
+    --publish 22050:8086 \    
     influxdb:alpine
 ```
 
@@ -36,6 +37,8 @@ docker service create \
     --detach=true \
     --constraint "node.role != manager" \
     --mount "type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock" \
+    --mount "type=bind,source=/mnt/efs/swarm-scale/collector,target=/app" \
+    --mount "type=bind,source=/sys/fs/cgroup,target=/sys/fs/cgroup" \
     getvivekv/swarm-collector
 ```        
 
