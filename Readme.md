@@ -25,11 +25,11 @@ docker service create \
 
 ```
 docker service create \
-	--network swarm-scale \
-	--name swarm-scale \
-	--publish 9000:80 \
-	--mount type=bind,source=/mnt/efs/swarm-scale/scale/src,target=/app,readonly=false \
-	--mount "type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock" \
-	--constraint "node.role == manager"  \
-	getvivekv/swarm-scale
+--network swarm-scale \
+--name swarm-scale \
+--publish 9000:80 \
+--mount type=bind,source=/mnt/efs/swarm-scale/scale/src,target=/app,readonly=false \
+--mount "type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock" \
+--constraint "node.role == manager"  \
+getvivekv/swarm-scale
 ```
