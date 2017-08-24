@@ -15,7 +15,6 @@ docker service create \
 	swarm-scale
 
 watch docker service ps swarm-scale
-exit ;
 docker tag swarm-scale getvivekv/swarm-scale
 docker login
 docker push getvivekv/swarm-scale

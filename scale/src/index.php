@@ -9,15 +9,17 @@ $url = 'http://influxdb:8086/query?pretty=true';
 $interval = 1; // 5 minutes
 
 $data = array(
-    'db' => 'swarm',
-    'q' => "SELECT * FROM cpu_load WHERE service='vivek' AND time > now() - " .$interval . "m"
+    'db' => 'cadvisor',
+    'q' => "SELECT * FROM cpu_usage_total WHERE service='us-uat-soss' AND time > now() - " .$interval . "m"
 );
 
 
 $return = $swarm->curlContents($url, 'POST', $data);
 $json = json_decode($return, true);
 echo '<pre>';
-//print_r($json);
+print_r($json);
+
+exit ;
 
 $values = $json['results'][0]['series'][0]['values'];
 //print_r($values);
